@@ -20,7 +20,7 @@ module.exports = {
         if (queue) {
             let y = queue.setPaused({ paused: false });
             return await message.channel.send({
-                y ? `⏸ | resumed.` : `:x: | failed to resume.`
+                content: y ? `⏸ | resumed.` : `:x: | failed to resume.`
             });
         }
     }
