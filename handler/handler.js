@@ -42,13 +42,13 @@ module.exports = {
         }
 
         if (command == 'stop') {
-            const Stop = require('../commands/Stop');
+            const Stop = require('../commands/stop');
             Stop.execute(message, client, player);
             return;
         }
 
         if (command == 'pause') {
-            const Pause = require('../commands/Pause');
+            const Pause = require('../commands/pause');
             Pause.execute(message, client, player);
             return;
         }
