@@ -3,6 +3,9 @@ module.exports = {
     description: 'resumes the currently paused song.',
 
     async execute(message, client, player) {
+        const guild = await client.guilds.fetch(message.guildId);
+        const author = await guild.members.fetch(message.author.id);
+
         if (author.voice.channelId == null) {
             message.channel.send('you are not in a voice channel.');
             return;
@@ -18,10 +21,10 @@ module.exports = {
         }
 
         if (queue) {
-            let y = queue.setPaused({ paused: false });
-            return await message.channel.send({
-                content: y ? `⏸ | resumed.` : `:x: | failed to resume.`
-            });
+            let y = queue.setPaused(false);
+            return await message.channel.send(
+                y ? '▶ | resumed.' : ':x: | failed to resume.'
+            );
         }
     }
 }

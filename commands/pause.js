@@ -3,6 +3,9 @@ module.exports = {
     description: 'pauses the currently playing song.',
 
     async execute(message, client, player) {
+        const guild = await client.guilds.fetch(message.guildId);
+        const author = await guild.members.fetch(message.author.id);
+
         if (author.voice.channelId == null) {
             message.channel.send('you are not in a voice channel.');
             return;
